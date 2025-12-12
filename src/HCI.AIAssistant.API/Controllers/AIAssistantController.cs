@@ -4,6 +4,8 @@ using HCI.AIAssistant.API.Models.DTOs.AIAssistantController;
 using HCI.AIAssistant.API.Services;
 using HCI.AIAssistant.API.Models.DTOs;
 using System.Text;
+using Microsoft.Azure.Devices;
+using Newtonsoft.Json;
 
 namespace HCI.AIAssistant.API.Controllers;
 
