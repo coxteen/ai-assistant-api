@@ -9,10 +9,16 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+// Comment out the check so it runs in Azure (Production)
+// if (app.Environment.IsDevelopment()) 
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
+// }
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
 }
 
 // Note: The lab manual implies adding Swagger to production or outside the IsDevelopment block 
@@ -20,8 +26,8 @@ if (app.Environment.IsDevelopment())
 // The manual specifically shows app.UseSwagger() and UI usually inside Development check, 
 // but implies we need it accessible.
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
